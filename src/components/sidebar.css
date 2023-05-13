@@ -1,0 +1,70 @@
+
+
+.sidebarmaindiv{
+    /* background-color: aqua; */
+    width: 20%;
+    height: 100vh;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.sidebarnavlinks{
+    /* background-color: pink; */
+    color: #1e3050;
+    font-weight: 600;
+    text-transform: capitalize;
+    /* display: flex; */
+    /* margin: 20px; */
+    font-size: 18px;
+    /* width: 100%; */
+    text-decoration: none;
+    /* margin-top: 20px; */
+    padding: 10px;
+    /* display: block; */
+}
+.navlinkdiv{
+    margin: 5px auto;
+    width: 90%;
+    /* background-color: purple; */
+    padding: 10px;
+    
+}
+.rounded-circle{
+    width: 40px;
+    height: 40px;
+    margin-top: 2.5px;
+    margin-left: 2.5px;
+}
+.dropdownportgrand{
+    height: 50px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    margin: 10px auto;
+display: flex;
+justify-content: space-around;
+color: gray;
+margin-top: 10px;
+    width: 90%;
+    background-color: #ffffff;
+    /* padding: '10px 5px'; */
+
+}
+#dropdownsidebar{
+    background-color: transparent !important;
+    color: gainsboro !important;
+}
+
+.metaimg{
+    width: 80px;
+    height: 40px;
+    /* background-color: aqua; */
+}
+.navlinkicon{
+    margin-right: 5px;
+}
+.metaimgandtextdiv{
+    /* background-color: peru; */
+    display: flex;
+    font-size: 25px;
+    line-height: 30px;
+    color: #1e3050;
+    font-weight: 500;
+}
