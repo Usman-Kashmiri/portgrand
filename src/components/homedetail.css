@@ -1,0 +1,88 @@
+
+
+.homedetaildiv{
+    width: 100%;
+    background-color: aqua;
+}
+.homedetailinnerdiv
+{width: 90%;
+    height: 70vh;
+margin: 0 auto;
+}
+.backgroundimgport{
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.twoportimg{
+    background-color: pink
+
+
+    ;
+    position: relative;
+    width: 100px;
+    background-color: purple;
+}
+.portoneimg{
+    /* background-color: orange; */
+    padding: 10px;
+    /* width: 110px; */
+    /* border-radius: 60px; */
+    display: flex;
+    margin: 90px;
+    width: 130px;
+    margin-top: -40px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    
+}
+.portimg{
+    border: 6px solid white;
+    width: 100px;
+    position: relative;
+    height: 100px;
+}
+.portimgsec{
+    border: 6px solid rgb(238, 232, 232);
+    width: 100px;
+    position: absolute;
+    height: 100px;
+    /* position: relative; */
+    left: 40px;
+    
+}
+.portprofiletext{
+    /* background-color: brown; */
+}
+.facebooksvg{
+    border: 3px solid white;
+    border-radius: 15px;
+    position: absolute;
+    top: 35px;
+    left: 108px;
+    z-index: 9999999;
+    width: 25px;
+    height: 25px;
+}
+.instagramsvg{
+    right: 60px;
+    background-color: white;
+    border-radius: 8px;
+    border: 3px solid white;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 35px;
+}
+.portheading{
+    font-size: 30px;
+    font-weight: 600;
+    /* background-color: brown; */
+    margin-bottom: 0px;
+}
+a {
+    text-decoration: none;
+    line-height: 20px;
+    /* background-color: brown; */
+    /* color: blue; */
+}
