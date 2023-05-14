@@ -90,5 +90,6 @@ button:hover {
 
 /* Imported CSS Files */
 @import './styles/pages/paymentActivity.css';
+@import './styles/pages/content.css';
 @import './styles/components/iconsSideNav.css';
 @import './styles/components/dataTable.css';
