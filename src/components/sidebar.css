@@ -91,7 +91,7 @@ color: gray;
 .metaimgandtextdiv{
     /* background-color: peru; */
     display: flex;
-    font-size: 23px;
+    font-size: 20px;
     line-height: 25px;
     width: 90%;
     margin: 0 auto;
