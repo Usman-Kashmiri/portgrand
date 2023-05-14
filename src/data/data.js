@@ -83,3 +83,22 @@ export const selectOptions = [
         label: "Port Grand (113949522673650)"
     },
 ]
+
+export const selectOptions2 = [
+    {
+        value: "transactions",
+        label: "Transactions"
+    },
+    {
+        value: "option 2",
+        label: "option 2"
+    },
+    {
+        value: "option 3",
+        label: "option 3"
+    },
+    {
+        value: "option 4",
+        label: "option 4"
+    },
+]

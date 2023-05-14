@@ -7,12 +7,14 @@ import searchIcon from "../../assets/images/icons/search.png";
 import usersIcon from "../../assets/images/icons/users.png";
 import notesIcon from "../../assets/images/icons/notes.png";
 import gearIcon from "../../assets/images/icons/gear.png";
+import meterIcon from "../../assets/images/icons/meter.png";
+import bellIcon from "../../assets/images/icons/bell.png";
 import faqIcon from "../../assets/images/icons/faq.png";
 import bugIcon from "../../assets/images/icons/bug.png";
 
 const IconsSideNav = () => {
   return (
-    <div className="icons-side-nav overflow-hidden d-flex py-4 flex-column gap-2 justify-content-between px-3 py-3 bg-white border-end min-vh-100 max-height-100vh">
+    <div className="icons-side-nav overflow-hidden d-flex py-3 flex-column gap-2 align-items-center justify-content-between px-3 py-3 bg-white border-end min-vh-100 max-height-100vh">
       {/* Meta logo */}
       <img
         className="w-100"
@@ -29,72 +31,57 @@ const IconsSideNav = () => {
 
       {/* icons navigation */}
       <div className="d-flex gap-3 flex-column mt-4 px-1">
-        <span className="px-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="100%"
-            height="100%"
-            fill="currentColor"
-            className="bi bi-speedometer"
-            viewBox="0 0 16 16"
-          >
-            <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z" />
-            <path
-              fillRule="evenodd"
-              d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"
-            />
-          </svg>
+        <span>
+          <img src={meterIcon} alt="meterIcon" className="side-nav-icon" />
         </span>
         <span>
-          <img src={calenderIcon} alt="calender icon" className="w-100" />
+          <img
+            src={calenderIcon}
+            alt="calenderIcon"
+            className="side-nav-icon"
+          />
         </span>
         <span>
-          <img src={notesIcon} alt="notesIcon" className="w-100" />
+          <img src={notesIcon} alt="notesIcon" className="side-nav-icon" />
         </span>
         <span>
-          <img src={usersIcon} alt="usersIcon" className="w-100" />
+          <img src={usersIcon} alt="usersIcon" className="side-nav-icon" />
         </span>
         <span>
-          <img src={ticketsIcon} alt="ticketsIcon" className="w-100" />
+          <img src={ticketsIcon} alt="ticketsIcon" className="side-nav-icon" />
         </span>
         <span className="active">
-          <img src={databaseIcon} alt="databaseIcon" className="w-100" />
+          <img
+            src={databaseIcon}
+            alt="databaseIcon"
+            className="side-nav-icon"
+          />
         </span>
         <span>
-          <img src={hamburgerIcon} alt="hamburgerIcon" className="w-100" />
+          <img
+            src={hamburgerIcon}
+            alt="hamburgerIcon"
+            className="side-nav-icon"
+          />
         </span>
       </div>
 
       {/* Lower icons */}
       <div className="d-flex flex-column gap-2 border-top px-1 pt-3 mt-4">
         <span>
-          <img src={gearIcon} alt="gearIcon" className="w-100" />
-        </span>
-        <span className="px-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            width="100%"
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-            />
-          </svg>
+          <img src={gearIcon} alt="gearIcon" className="side-nav-icon" />
         </span>
         <span>
-          <img src={searchIcon} alt="searchIcon" className="w-100" />
+          <img src={bellIcon} alt="bellIcon" className="side-nav-icon" />
         </span>
         <span>
-          <img src={faqIcon} alt="faqIcon" className="w-100" />
+          <img src={searchIcon} alt="searchIcon" className="side-nav-icon" />
         </span>
         <span>
-          <img src={bugIcon} alt="bugIcon" className="w-100" />
+          <img src={faqIcon} alt="faqIcon" className="side-nav-icon" />
+        </span>
+        <span>
+          <img src={bugIcon} alt="bugIcon" className="side-nav-icon" />
         </span>
       </div>
     </div>
