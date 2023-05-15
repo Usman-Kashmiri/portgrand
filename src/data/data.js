@@ -27,7 +27,7 @@ export const sideNav = [
     {
         name: "home",
         path:"/",
-        icon:<i className="fa fa-home"></i>
+        icon:<img className='navlinkicon' width={20}  src={home}/>
     },
     {
         name: "notification",
@@ -184,4 +184,48 @@ export const selectOptions2 = [
         value: "option 4",
         label: "option 4"
     },
+]
+
+
+
+
+export const Contentdrops = [
+    {
+        name:'Posts and reels',
+        path:'/postandreel'
+    },
+    {
+        name:'Stories',
+        path:'/stories'
+    },
+    {
+        name:'abtests',
+        path:'/abtests'
+    },
+    {
+        name:'feedandgrid',
+        path:'/feedandgrid'
+    },
+    {
+        name:'mentionsandtags',
+        path:'/mentionsandtags'
+    },
+    {
+        name:'Clips',
+        path:'/Clips'
+    },
+    {
+        name:'Unibelled content',
+        path:'/Unibelledcontent'
+    },
+     
+]
+
+
+const contenttablesdetailsone = [
+   
+    'Few beautiful clicks of Port Grand, Do visi...',
+    'Celebrating the hard work and dedicatio...',
+    
+   
 ]
