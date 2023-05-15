@@ -1,0 +1,41 @@
+.payment-activity {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+.rounded-container {
+    border-radius: .7rem;
+    box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.1);
+}
+
+.custom-grid {
+  display: grid;
+  grid-template-columns: 5% 95%;
+}
+
+.mantine-DatePickerInput-wrapper {
+    position: relative !important;
+}
+
+.mantine-DatePickerInput-wrapper button {
+    background-color: #f0f0f0;
+    border: none;
+    padding-left: 36px;
+}
+
+.mantine-DatePickerInput-wrapper button::before {
+  content: "\f073";
+  display: inline-block;
+  z-index: 10 !important;
+  font-family: fontAwesome;
+  font-size: 1.25rem;
+  font-weight: 900;
+  position: absolute;
+  left: 6px;
+  top: 4px;
+}
+
+.table-container {
+    overflow: hidden;
+    min-width: 100%;
+}

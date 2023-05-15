@@ -27,7 +27,7 @@ export const sideNav = [
     {
         name: "home",
         path:"/",
-        icon:<img className='navlinkicon' width={20}  src={home}/>
+        icon:<i className="fa fa-home"></i>
     },
     {
         name: "notification",
@@ -78,9 +78,6 @@ export const sideNav = [
     },
 ]
 
-
-
-
 // all tool data //
 
 export const engageAudience =[
@@ -110,6 +107,7 @@ export const engageAudience =[
         image: <img  width={25} height={25} src={musictool}/>,
     },
 ]
+
 // all tool data two//
 
 export const manage =[
@@ -147,5 +145,43 @@ export const manage =[
         heading:'Settings',
         // details:'Plan your marketing calender by creating schedule and managing your content.',
         image: <img  width={25} height={25} src={settingstool}/>,
+    },
+]
+
+export const selectOptions = [
+    {
+        value: "113949522673653",
+        label: "Port Grand (113949522673653)"
+    },
+    {
+        value: "113949522673652",
+        label: "Port Grand (113949522673652)"
+    },
+    {
+        value: "113949522673651",
+        label: "Port Grand (113949522673651)"
+    },
+    {
+        value: "113949522673650",
+        label: "Port Grand (113949522673650)"
+    },
+]
+
+export const selectOptions2 = [
+    {
+        value: "transactions",
+        label: "Transactions"
+    },
+    {
+        value: "option 2",
+        label: "option 2"
+    },
+    {
+        value: "option 3",
+        label: "option 3"
+    },
+    {
+        value: "option 4",
+        label: "option 4"
     },
 ]
