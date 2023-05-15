@@ -1,0 +1,51 @@
+
+
+
+
+.searchbox{
+    background-color: white;
+    /* margin: 10px auto; */
+    margin-left: 10%;
+    margin-bottom: 10px;
+    width: 89%;
+    padding: 5px;
+    border: 2px solid gainsboro;
+    margin-top: 34px;
+    border-radius: 5px;
+}
+.searchinput{
+    border: none;
+    font-size: 15px;
+    padding-left: 10px;
+    outline: none;
+    width: 95%;
+    
+}
+.toolheadingone{
+    /* line-height: 23px; */
+    /* background-color: aqua; */
+    font-size: 23px;
+    margin-bottom: 0px;
+    font-weight: 700;
+    
+}
+.toolfirst{
+    font-size: 18px;
+    margin-left: 10px;
+    /* background-color: aqua; */
+    padding-bottom: 0px !important;
+    /* line-height: 16px; */
+    margin-bottom: 0px;
+    font-weight: 700;
+}
+.tooldetails{
+    font-size: 15px;
+    color: gray;
+    font-weight: 300;
+}
+.headingimg{
+    /* background-color: red; */
+    padding: 0px;
+    margin-bottom: 0px;
+    line-height: 1px;
+}

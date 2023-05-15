@@ -1,8 +1,11 @@
 
 
+.row{
+    /* --bs-gutter-x:0px; */
+}
 .homedetaildiv{
+    background-color: #e7ebfd;
     width: 100%;
-    background-color: aqua;
 }
 .homedetailinnerdiv
 {width: 90%;
@@ -15,13 +18,13 @@ margin: 0 auto;
     border-bottom-right-radius: 10px;
 }
 .twoportimg{
-    background-color: pink
+    /* background-color: pink */
 
-
-    ;
+/*  */
+    /* ; */
     position: relative;
     width: 100px;
-    background-color: purple;
+    /* background-color: purple; */
 }
 .portoneimg{
     /* background-color: orange; */
@@ -43,16 +46,20 @@ margin: 0 auto;
     height: 100px;
 }
 .portimgsec{
-    border: 6px solid rgb(238, 232, 232);
+    border: 6px solid white;
+    /* border: 6px solid rgb(26, 292, 332); */
     width: 100px;
     position: absolute;
     height: 100px;
     /* position: relative; */
     left: 40px;
     
+    /* background-color: brown; */
 }
 .portprofiletext{
     /* background-color: brown; */
+    /* margin-left: -20px !important; */
+    padding-left: 0px !important;
 }
 .facebooksvg{
     border: 3px solid white;
@@ -65,7 +72,7 @@ margin: 0 auto;
     height: 25px;
 }
 .instagramsvg{
-    right: 60px;
+    right: 30px;
     background-color: white;
     border-radius: 8px;
     border: 3px solid white;
@@ -85,4 +92,79 @@ a {
     line-height: 20px;
     /* background-color: brown; */
     /* color: blue; */
+}
+/* .divtwohomepage{ */
+    /* background-color: peru; */
+/* } */
+.divtwobtnone{
+    background-color: #0b78bb;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    color: white;
+}
+.divtwobtntwo{
+    background-color: #f8f9fb;
+    width: 100%;
+    padding: 5px;
+    /* color: grey; */
+    margin-top: 5px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid gainsboro;
+}
+.divtwobtthree{
+    background-color: #f8f9fb;
+    /* color: grey; */
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: none;
+    border: 1px solid gainsboro;
+    margin: 5px;
+}
+.facebookviewerpercent{
+    color: rgb(206, 6, 50);
+}
+.trendsbox{
+    background-color: #f8f9fb;
+    /* background-color: #ffffff; */
+    /* background-color: #ffff66; */
+    margin-top: 15px;
+    /* padding: 5px; */
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-left: 1px;
+    /* margin-right: 10px; */
+    line-height: 13px;
+}
+.trendtext{
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 10px;
+    /* padding-top: 50px; */
+}
+.trendlineheighttext{
+    color: gray;
+    /* background-color: yellow; */
+    font-size: 14px;
+    /* line-height: 10px; */
+}
+.instaimgandtext{
+    /* background-color: orangered; */
+    margin-top: -10px;
+}
+.todoheading{
+    font-size: 25px;
+    font-weight: 700;
+    margin-top: 50px;
+}
+.todounderlinetext{
+    color: gray;
+    /* background-color: yellow; */
+    margin-top: -10px;
 }
