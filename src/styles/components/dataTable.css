@@ -1,6 +1,16 @@
-.paid-status {
+.Paid-status {
     background-color: #d5f3bf;
     color: #487437;
+    padding: 3px 10px;
+}
+.Pending-status {
+    background-color: #f9b800;
+    color: #3e3e3e;
+    padding: 3px 10px;
+}
+.Cancel-status {
+    background-color: #f95827;
+    color: #d5f3bf;
     padding: 3px 10px;
 }
 
