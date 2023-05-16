@@ -15,6 +15,7 @@ const Router = () => {
         <Route path='/payment-activity' element={<PaymentActivity />} />
         <Route path='/content' element={<Content />} />
         <Route path='/add-payment' element={<AddPayment />} />
+        <Route path='/postandreel' element={<Content />} />
         <Route path='*' element={<PageNotFound />} />
     </Routes>
    

@@ -18,3 +18,259 @@
     background-color: #1273c2;
     color: white;
 }
+.createdropdown{
+    /* border-radius: 6px; */
+    /* width: 100px; */
+    background-color: #1273c2;
+    color: white;
+    /* padding: 5px ; */
+    /* padding-top: 0px; */
+    /* padding-bottom: 0px; */
+    border: none;
+    outline: none;
+    font-size: 15px;
+    
+}
+.contentsidebar{
+    /* background-color: orange; */
+    padding-top: 30px;
+    margin: 20px;
+}
+.contentdropsdiv{
+    /* background-color: rgb(150, 39, 57); */
+    margin-top: 5px;
+    color: #253843;
+    
+    padding: 5px 10px;
+}
+.contentdropslink{
+    /* font-weight: 500; */
+    color: #253843;
+
+}
+.contentdropsmainbtn{
+    color: #253843;
+    border-bottom: none !important;
+    outline: none;
+}
+.accordion-button:not(.collapsed) {
+    outline: none;
+    color: #253843;
+    background-color: transparent;
+    font-weight: 700;
+    border: none !important;
+}
+.contentdropimg{
+    margin-right: 5px;
+}
+.contentdropsdivactiv{
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: #253843;
+    color: white;
+    border-radius: 5px;
+    font-weight: 700;
+}
+.accordion{
+    background-color: #eff8ff !important;
+}
+.accordion-item, .accordion-header , .accordion-button{
+    border: none !important;
+}
+
+.accordion-body , .accordion-button {
+    background-color: #eff8ff !important;
+    border-bottom: none !important;
+    
+}
+.collapsed{
+    border-bottom: none;
+
+}
+.contenttablediv{
+    /* background-color: yellow; */
+    margin-top: 20px;
+    /* margin-left: 180px; */
+    /* width: 100px; */
+}
+.contenttableinnerdiv{
+    background-color: white;
+    border-radius: 10px;
+    height: 100%;
+    width: 1090px;
+    margin-left: -180px;
+}
+.contenttabs{
+    /* background-color: rgb(105, 32, 44); */
+    display: flex;
+    border-bottom: 1px solid gainsboro;
+    margin: 5px 10px;
+
+
+}
+.contenttabsdiv{
+    /* background-color: rgb(105, 32, 44); */
+    display: flex;
+    /* border-bottom: 1px solid gainsboro; */
+    margin: 5px 10px;
+
+
+}
+.contentabslinks{
+    /* background-color:aqua; */
+    margin: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: gray;
+}
+
+.contentabslinksactiv{
+    cursor: pointer;
+color:#1273c2;
+background-color: #eff8ff;
+border: none;
+font-weight: 700;
+border-radius: 5px;
+    margin: 10px;
+    padding: 8px 15px;
+    /* color: gainsboro; */
+
+}
+.contentdropdowns{
+    margin: 10px;
+    width: 200px;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: gray;
+    border: 1px solid gainsboro;
+}
+.searchboxdiv{
+    margin: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    width: 200px;
+    color: gray;
+    border: 1px solid gainsboro;
+    /* background-color: aqua; */
+    margin-right: 0px;
+}
+.searchboxmaindiv{
+    /* width: 300px; */
+    display: flex;
+    /* background-color: green; */
+}
+.mantine-1sd8r2y{
+    width: 300px !important;
+}
+.contentdatepicker{
+    margin-top: 10px;
+
+}
+.columnsboxdiv{
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    color: gray;
+    border: 1px solid gainsboro;
+    background-color: rgb(245, 240, 240);
+    /* background-color: ; */
+    margin-right: 0px;
+}
+.columnsbtndiv{
+    width: 110px;
+    border: none;
+    background-color: rgb(245, 240, 240);
+}
+.contentclearbtn{
+    /* background-color: orange; */
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    color: #1273c2;
+}
+.contenttabelimgandtextdiv{
+    /* background-color: palevioletred; */
+    display: flex;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    /* line-height: 1px; */
+}
+.contenttabelimgandtextmaindiv{
+    /* margin: 10px; */
+    /* background-color: #1273c2 !important; */
+    /* padding: 0px !important; */
+    /* margin: 5px; */
+    padding-top: 10px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding-bottom: 10px;
+    justify-content: space-between;
+    display: flex;
+}
+.contentheadingone{
+    /* background-color: aqua; */
+    margin-top: 5px;
+    /* font-size: 13px; */
+    margin-bottom: 0px ;
+}
+.rounded-circle-content{
+    width: 25x;
+    height: 25px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+.contentsubtittle{
+    /* background-color: aqua; */
+    margin-bottom: 0px;
+}
+.contentboostbtn{
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    width: 150px;
+    margin: 5px;
+    border: 1px solid gainsboro;
+    color: gray;
+}
+.contentboostbtnempty{
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    width: 150px;
+    margin: 5px;
+    border: 1px solid gainsboro;
+    color: gray;
+}
+.contentboostbtnsmall{
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    width: 50px;
+    margin: 5px;
+    border: 1px solid gainsboro;
+    color: gray;
+}
+.contentonebuttondiv{
+    display: flex;
+    align-items: center;
+}
+.dasheddetail{
+    /* background-color: aqua; */
+}
+.dashdetailsubtittle{
+    /* background-color: orange; */
+    font-size: 13px;
+    line-height: 13px;
+    margin: 0px;
+}
