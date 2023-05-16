@@ -6,12 +6,12 @@ import { selectOptions, selectOptions2 } from "../data/data";
 import DataTable from "../components/layout/DataTable";
 
 const PaymentActivity = () => {
-  const [selectedDate, setSelectedDate] = useState([
-    new Date(2023, 3, 17),
-    new Date(2023, 4, 7),
+  let [selectedDate, setSelectedDate] = useState([
+    new Date(2023,0, 1),
+    new Date(),
   ]);
-  //   const [value, setValue] = useState(new Date());
 
+  let [totalAmount, setTotalAmount] = useState(0);
   return (
     <div className="payment-activity custom-grid max-width-100vw">
       <IconsSideNav />
@@ -55,7 +55,7 @@ const PaymentActivity = () => {
               <span className="font-poppins fs-7 text-grey-color">
                 current balance <i className="fa fa-info-circle"></i>
               </span>
-              <span className="font-poppins fw-bold fs-5">Rs4,163.63</span>
+              <span className="font-poppins fw-bold fs-5">Rs{totalAmount}</span>
             </span>
             <button className="btn-blue border-0 px-3 py-2 rounded-3 font-poppins">
               Pay now
@@ -89,11 +89,12 @@ const PaymentActivity = () => {
             className="d-flex justify-content-end align-items-center gap-3"
           >
             <DatePickerInput
-              className="select-grey-color font-poppins"
+              className="select-grey-color  font-poppins"
               placeholder="Pick dates range"
               value={selectedDate}
               onChange={setSelectedDate}
               type="range"
+              
             />
           </Grid.Col>
         </Grid>
@@ -107,7 +108,7 @@ const PaymentActivity = () => {
             </button>
           </Grid.Col>
           <Grid.Col span={12} className="px-0">
-            <DataTable />
+            <DataTable setSelectedDate={setSelectedDate} selectedDate={selectedDate} setTotalAmount={setTotalAmount} totalAmount={totalAmount}/>
           </Grid.Col>
         </Grid>
       </Container>

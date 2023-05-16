@@ -21,6 +21,13 @@ import billing from '../components/images/billing.png'
 import paylot from '../components/images/paylot.png'
 import businessapps from '../components/images/businessapps.png'
 import accountquality from '../components/images/accountquality.png'
+import ali_pay from '../assets/images/paymentmethod/ali_pay.jpg'
+import apple_pay from '../assets/images/paymentmethod/apple_pay.jpg'
+import debit from '../assets/images/paymentmethod/debit.jpg'
+import master_card from '../assets/images/paymentmethod/master_card.jpg'
+import paypal_payment from '../assets/images/paymentmethod/paypal_payment.jpg'
+import visa_card from '../assets/images/paymentmethod/visa_card.jpg'
+
 // import settingstool from '../components/images/settingstool.png'
 
 export const sideNav = [
@@ -185,3 +192,45 @@ export const selectOptions2 = [
         label: "option 4"
     },
 ]
+ 
+export const paymentmethods = [
+    {
+      image: ali_pay,
+      label: 'Ali Pay',
+      value: '1',
+      description: 'Ali Pay',
+    },
+  
+    {
+      image: debit,
+      label: 'Debit Card',
+      value: '2',
+      description: 'Debit Card',
+    },
+    {
+      image: apple_pay,
+      label: 'Apple Pay',
+      value: '3',
+      description: 'Apple Pay',
+    },
+    {
+      image: master_card,
+      label: 'Master Card',
+      value: '4',
+      description: 'Master Card',
+    },
+    {
+      image: paypal_payment,
+      label: 'Paypal Payment',
+      value: '5',
+      description: 'Paypal Payment',
+    },
+    {
+      image: visa_card,
+      label: 'Visa Card',
+      value: '6',
+      description: 'Visa Card',
+    },
+  ];
+
+  
