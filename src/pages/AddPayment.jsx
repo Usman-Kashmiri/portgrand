@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import { Avatar, Grid, Group, Input, Select, Text, TextInput, Button, Loader } from '@mantine/core';
 import { paymentmethods } from '../data/data'
 import AuthUser from '../Config/UserAuth';
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -11,16 +12,29 @@ import AuthUser from '../Config/UserAuth';
 
 const AddPayment = () => {
 
+
     const { http, alertMessage } = AuthUser();
     const [alert, setAlert] = useState('')
+
+    const location = useLocation(); 
+    const detail = location.state;
+
     const [inputVal, setInputVal] = useState({
         transaction_id: '',
         date: '',
         amount: '',
-        payment_method: '',
+        payment_method_id: '',
         payment_status: '',
         invoice_id: '',
     })
+    useEffect(() => {
+        if(detail){
+            setInputVal({ ...inputVal, ...detail });
+        } 
+     console.log(inputVal); 
+    }, [detail]);
+
+   
     function removeNonNumeric(inputString) {
         return inputString.replace(/[^0-9.]/g, '')
     }
@@ -108,6 +122,7 @@ const AddPayment = () => {
                             name='transaction_id'
                             onChange={handleInput}
                             label='Transaction ID'
+                            value={inputVal.transaction_id}
                         />
                     </Grid.Col>
                     <Grid.Col span={6}>
@@ -118,6 +133,7 @@ const AddPayment = () => {
                             label="Date"
                             name='date'
                             type='date'
+                            value={inputVal.date}
                             onChange={handleInput}
                         />
 
@@ -131,6 +147,7 @@ const AddPayment = () => {
                             size="md"
                             type='text'
                             name='amount'
+                            value={inputVal.amount}
                             onChange={handleInput}
                         />
 
@@ -146,18 +163,20 @@ const AddPayment = () => {
                             searchable
                             maxDropdownHeight={400}
                             nothingFound="Nobody here"
+                            value={inputVal.payment_method_id}
                             onChange={(e) => handleInput(e, 'payment_method')}
                             filter={(value, item) =>
-                                item.label.toLowerCase().includes(value.toLowerCase().trim()) ||
-                                item.description.toLowerCase().includes(value.toLowerCase().trim())
+                                item.label.includes(value.trim()) ||
+                                item.description.includes(value.trim())
                             }
-                        />
+                        /> 
 
                     </Grid.Col>
                     <Grid.Col span={6}>
                         <Select
                             label="Payment status"
                             placeholder="Payment status"
+                            value={inputVal.payment_status}
                             onChange={(e) => handleInput(e, 'payment_status')}
                             data={[
                                 { value: 'Paid', label: 'Paid' },
@@ -175,6 +194,7 @@ const AddPayment = () => {
                             radius="md"
                             size="md"
                             type='text'
+                            value={inputVal.invoice_id}
                             onChange={handleInput}
                         />
                     </Grid.Col>
