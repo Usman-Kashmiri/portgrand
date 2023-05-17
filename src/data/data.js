@@ -243,15 +243,15 @@ export const Contentdrops = [
         path:'/stories'
     },
     {
-        name:'abtests',
+        name:'A/Btests',
         path:'/abtests'
     },
     {
-        name:'feedandgrid',
+        name:'Feed and grid',
         path:'/feedandgrid'
     },
     {
-        name:'mentionsandtags',
+        name:'Mentions and tags',
         path:'/mentionsandtags'
     },
     {

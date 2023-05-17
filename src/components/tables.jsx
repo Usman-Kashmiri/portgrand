@@ -28,7 +28,7 @@ const Tabledetails = (props) => {
   const datepublished = ['1 May 05:54', '1 May 00:21', '30 April 20:50', '30 Aril 20:50']
   return (
 
-    <Table responsive   >
+    <Table responsive  style={{width:'auto' ,}}>
       <thead>
         <tr>
           <th scope="col"></th>
@@ -38,6 +38,7 @@ const Tabledetails = (props) => {
           <th scope="col">Reach</th>
           <th scope="col">Engagements</th>
           <th scope="col">Likes and reaction</th>
+          <th scope='col'> Edit/Del</th>
         </tr>
       </thead>
       <tbody >
@@ -45,12 +46,12 @@ const Tabledetails = (props) => {
         {data?.map((res) => (
           <tr>
             <th scope="row" >
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" style={{ width: '30px', height: '30px', marginTop: '30px' }} />
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" style={{ width: '30px', height: '30px', marginTop: '25px' }} />
             </th>
 
             <td className="contenttabelimgandtextmaindiv">
               <img src={res.image} width={60} height={60} style={{ borderRadius: '10px', backgroundColor: 'yellow', display: 'flex', alignSelf: 'center', marginRight: '5px' }} />
-              <div style={{ marginLeft: '35px' }} >
+              <div style={{ marginLeft: '5px' }} >
 
                 <p className="contentheadingone">{res.title}</p>
                 <div className="contenttabelimgandtextdiv">
@@ -68,21 +69,25 @@ const Tabledetails = (props) => {
                 <button className="contentboostbtnsmall">...</button>
               </div>
             </td>
-            <td>1 May 05:54</td>
+            <td className='tabledatetd'>1 May 05:54</td>
             <td className='dasheddetail'>
-              <p>{res.reach}</p>
+              <p className='tablereachtext'>{res.reach}</p>
+              <p className='dashdetailsubtittle'>Accounts Centre accou...</p>
+              <Progress style={{ margin: '0px',height:'5px' }} strokeColor='seagreen' percent={50} showInfo={false} height={3} />
+            </td>
+            <td className='dasheddetail'>
+              <p className='tablereachtext'>{res.engagements}</p>
               <p className='dashdetailsubtittle'>Accounts Centre accou...</p>
               <Progress style={{ margin: '0px' }} strokeColor='seagreen' percent={50} showInfo={false} height={3} />
             </td>
             <td className='dasheddetail'>
-              <p>{res.engagements}</p>
+              <p className='tablereachtext'>{res.like_reactions}</p>
               <p className='dashdetailsubtittle'>Accounts Centre accou...</p>
               <Progress style={{ margin: '0px' }} strokeColor='seagreen' percent={50} showInfo={false} height={3} />
             </td>
-            <td className='dasheddetail'>
-              <p>{res.like_reactions}</p>
-              <p className='dashdetailsubtittle'>Accounts Centre accou...</p>
-              <Progress style={{ margin: '0px' }} strokeColor='seagreen' percent={50} showInfo={false} height={3} />
+            <td style={{paddingTop:'30px'}}>
+            <i class="fa-regular fa-pen-to-square" style={{marginRight:'5px' , marginLeft:'10px'}}></i>
+            <i className="fa-solid fa-trash"></i>
             </td>
           </tr>
         ))}

@@ -117,7 +117,7 @@ const Content = () => {
   </div>
 </div>
           </Grid.Col>
-          <Grid.Col span={8} className="contenttablediv">
+          <Grid.Col span={10} className="contenttablediv">
             <div className="contenttableinnerdiv">
 
 <div className="contenttabs">
@@ -181,10 +181,11 @@ const Content = () => {
         ></path>
       </g>
     </svg>
-
-      Search by ID or catag...
+<input placeholder="Search by ID or catag..." style={{border:'none' , outline:"none"}}/>
+      
     </div>
-    <img src={searchiwala}/>
+    {/* <img src={searchiwala}/> */}
+    <i className="fa fa-info-circle" style={{marginTop:'20px',marginLeft:'5px'}}></i>
     </div>
     <DatePickerInput
               className="select-grey-color font-poppins contentdatepicker"
@@ -192,11 +193,12 @@ const Content = () => {
               value={selectedDate}
               onChange={setSelectedDate}
               type="range"
+             
             />
             <div className="columnsboxdiv">
 
             <button className="columnsbtndiv">
-              <img src={contentcolumn}/>
+              <img src={contentcolumn} width={20 }  style={{marginRight:'5px'}}/>
               Columns
             </button>
             </div>

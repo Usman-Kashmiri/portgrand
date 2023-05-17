@@ -33,12 +33,13 @@ margin: 0 auto;
     /* width: 110px; */
     /* border-radius: 60px; */
     display: flex;
-    margin: 20px;
+    /* margin: 10px; */
     position: relative;
     width: 130px;
     margin-top: -40px;
+    margin-left: 8px;
     margin-bottom: 0px;
-    margin-right: 0px;
+    margin-right: 5px;
     
 }
 

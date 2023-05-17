@@ -34,21 +34,25 @@
 .contentsidebar{
     /* background-color: orange; */
     padding-top: 30px;
-    margin: 20px;
+    margin-top: 20px;
+    margin-left: -40px;
 }
 .contentdropsdiv{
     /* background-color: rgb(150, 39, 57); */
     margin-top: 5px;
     color: #253843;
-    
-    padding: 5px 10px;
+    /* width: 200px; */
+    padding: 5px 5px;
+    font-size: 15px;
 }
+
 .contentdropslink{
     /* font-weight: 500; */
     color: #253843;
 
 }
 .contentdropsmainbtn{
+    /* background-color: yellow; */
     color: #253843;
     border-bottom: none !important;
     outline: none;
@@ -71,8 +75,12 @@
     border-radius: 5px;
     font-weight: 700;
 }
+.contentdropsdivactiv:hover{
+    color: white;
+}
 .accordion{
     background-color: #eff8ff !important;
+    width: 215px;
 }
 .accordion-item, .accordion-header , .accordion-button{
     border: none !important;
@@ -97,8 +105,10 @@
     background-color: white;
     border-radius: 10px;
     height: 100%;
-    width: 1090px;
-    margin-left: -180px;
+    overflow-x: auto;
+    overflow-y: auto;
+    /* width: 1090px; */
+    /* margin-left: -180px; */
 }
 .contenttabs{
     /* background-color: rgb(105, 32, 44); */
@@ -109,7 +119,9 @@
 
 }
 .contenttabsdiv{
+    align-items: flex-start;
     /* background-color: rgb(105, 32, 44); */
+    justify-content: space-between;
     display: flex;
     /* border-bottom: 1px solid gainsboro; */
     margin: 5px 10px;
@@ -138,7 +150,9 @@ border-radius: 5px;
 }
 .contentdropdowns{
     margin: 10px;
-    width: 200px;
+    width: 160px;
+    margin-right: 0px;
+    font-size: 13px;
     /* background-color: aqua; */
     display: flex;
     justify-content: space-between;
@@ -153,7 +167,8 @@ border-radius: 5px;
     align-items: center;
     padding: 5px;
     border-radius: 5px;
-    width: 200px;
+    width: 180px;
+    font-size: 13px;
     color: gray;
     border: 1px solid gainsboro;
     /* background-color: aqua; */
@@ -168,7 +183,9 @@ border-radius: 5px;
     width: 300px !important;
 }
 .contentdatepicker{
+    font-size: 13px !important;
     margin-top: 10px;
+    padding: 0px !important;
 
 }
 .columnsboxdiv{
@@ -185,12 +202,14 @@ border-radius: 5px;
     margin-right: 0px;
 }
 .columnsbtndiv{
-    width: 110px;
+    font-size: 13px;
+    width: 100px;
     border: none;
     background-color: rgb(245, 240, 240);
 }
 .contentclearbtn{
     /* background-color: orange; */
+    margin-left: 5px;
     display: flex;
     align-items: center;
     margin-top: 15px;
@@ -229,21 +248,26 @@ border-radius: 5px;
 }
 .contentsubtittle{
     /* background-color: aqua; */
+    font-size: 13px;
     margin-bottom: 0px;
+}
+.tabledatetd{
+    font-size: 13px;
 }
 .contentboostbtn{
     background-color: #f0f0f0;
-    padding: 5px 10px;
+    padding: 5px 5px;
     border-radius: 5px;
     border: none;
-    width: 150px;
+    font-size: 15px;
+    width: 100px;
     margin: 5px;
     border: 1px solid gainsboro;
     color: gray;
 }
 .contentboostbtnempty{
     background-color: #f0f0f0;
-    padding: 5px 10px;
+    padding: 5px 15px;
     border-radius: 5px;
     border: none;
     width: 150px;
@@ -251,12 +275,16 @@ border-radius: 5px;
     border: 1px solid gainsboro;
     color: gray;
 }
+.tablereachtext{
+    /* background-color: orange; */
+    line-height: 5px;
+}
 .contentboostbtnsmall{
     background-color: #f0f0f0;
     padding: 5px 10px;
     border-radius: 5px;
     border: none;
-    width: 50px;
+    width: 30px;
     margin: 5px;
     border: 1px solid gainsboro;
     color: gray;
