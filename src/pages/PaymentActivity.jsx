@@ -7,7 +7,7 @@ import DataTable from "../components/layout/DataTable";
 
 const PaymentActivity = () => {
   let [selectedDate, setSelectedDate] = useState([
-    new Date(2023,0, 1),
+    new Date(2023, 0, 1),
     new Date(),
   ]);
 
@@ -30,19 +30,22 @@ const PaymentActivity = () => {
             span={6}
             className="d-flex justify-content-end align-items-center gap-3"
           >
-            <button className="btn-grey border-0 px-3 py-2 rounded-3 font-poppins">
+            <button className="btn-grey border px-3 py-2 rounded-3 font-poppins">
               Payment Settings
             </button>
-            <Select
+            <span className="bg-white font-poppins py-2 px-3 rounded-1 border">
+              Port Grand (113949522673653)
+            </span>
+            {/* <Select
               className="font-poppins"
               defaultValue={"113949522673653"}
               data={selectOptions}
-            />
+            /> */}
           </Grid.Col>
         </Grid>
         <Grid className="p-2 justify-content-between mt-4 bg-white rounded-container">
           <Grid.Col span={5} className="d-flex flex-column">
-            <span className="font-poppins fs-7">ad account</span>
+            <span className="font-poppins fs-7">Ad account</span>
             <span className="font-poppins fw-bold fs-5">
               Port Grand (113949522673653)
             </span>
@@ -94,11 +97,10 @@ const PaymentActivity = () => {
               value={selectedDate}
               onChange={setSelectedDate}
               type="range"
-              
             />
           </Grid.Col>
         </Grid>
-        <Grid className="justify-content-between mt-4 bg-white rounded-container">
+        <Grid className="table-container justify-content-between mt-4 bg-white rounded-container">
           <Grid.Col
             span={12}
             className="border-bottom d-flex justify-content-end px-3 pt-3 pb-2"
@@ -107,8 +109,13 @@ const PaymentActivity = () => {
               Download <i className="ms-2 fas fa-caret-down"></i>
             </button>
           </Grid.Col>
-          <Grid.Col span={12} className="px-0">
-            <DataTable setSelectedDate={setSelectedDate} selectedDate={selectedDate} setTotalAmount={setTotalAmount} totalAmount={totalAmount}/>
+          <Grid.Col span={12} className="px-0 py-0">
+            <DataTable
+              setSelectedDate={setSelectedDate}
+              selectedDate={selectedDate}
+              setTotalAmount={setTotalAmount}
+              totalAmount={totalAmount}
+            />
           </Grid.Col>
         </Grid>
       </Container>

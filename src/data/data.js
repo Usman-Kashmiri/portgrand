@@ -91,27 +91,27 @@ export const engageAudience =[
     {
         heading:'Content',
         details:'Schedule, publish and manage post and stories, create draft post and access Facebook photos',
-        image: <img  width={25} height={25} src={contentool}/>,
+        image: contentool,
     },
     {
         heading:'Game streaming',
         details:'Dashboard for gaming creators to reach your audience and advance to the nect level',
-        image: <img  width={25} height={25} src={gamingtools}/>,
+        image: gamingtools,
     },
     {
         heading:'Inbox',
         details:'Respond to messages and comments, set up automated responses and assign conversations.',
-        image: <img  width={25} height={25} src={inboxtool}/>,
+        image: inboxtool,
     },
     {
         heading:'Planner',
         details:'Plan your marketing calender by creating schedule and managing your content.',
-        image: <img  width={25} height={25} src={plannertool}/>,
+        image: plannertool,
     },
     {
         heading:<p className='headingimg'>Sound Collection <img width={25}  src={musicedit}/> </p>,
         details:'Enhance your videos or audio content with rights-cleared music or sound effects and use it on bussiness, creator or personal accounts across Meta.',
-        image: <img  width={25} height={25} src={musictool}/>,
+        image: musictool,
     },
 ]
 
@@ -119,39 +119,42 @@ export const engageAudience =[
 
 export const manage =[
     {
-        heading:<div className='headingimg'><span>Account Quality</span> <img width={25}  src={musicedit}/> </div>,
+        heading:"Account Quality",
         details:'Manage ads that don,t comply with our Advertising Policies and request another review.',
-        image: <img  width={25} height={25} src={accountquality}/>,
+        image: accountquality,
+        icon: musicedit
     },
     {
-        heading:<div className='headingimg'><span>Billing</span><img width={25}  src={musicedit}/> </div>,
+        heading:"Billing",
         details:' View payment history for your ad accounts. ',
-        image: <img  width={25} height={25} src={billing}/>,
+        image: billing,
+        icon: musicedit
     },
     {
         heading:'Business apps',
         details:' Connect your facebook page with apps that will help you manage and grow your business. ',
-        image: <img  width={25} height={25} src={businessapps}/>,
+        image: businessapps,
     },
     {
         heading:'File Manager',
         details:'Mange and organise image and video files for use in posts and stories.',
-        image: <img  width={25} height={25} src={filemanager}/>,
+        image: filemanager,
     },
     {
-        heading:<div className='headingimg'><span>Page settings</span> <img width={25}   src={musicedit}/> </div>,
+        heading:"Page settings",
         details:'Manage Page roles, Instagram and WhatApp connections and more info associated with your page.',
-        image: <img  width={25} height={25} src={settingstool}/>,
+        image: settingstool,
+        icon: musicedit
     },
     {
         heading:'Payouts',
         details:'See earnings, balances and payment activity, and manage payment methods.',
-        image: <img  width={25} height={25} src={paylot}/>,
+        image: paylot,
     },
     {
         heading:'Settings',
         // details:'Plan your marketing calender by creating schedule and managing your content.',
-        image: <img  width={25} height={25} src={settingstool}/>,
+        image: settingstool,
     },
 ]
 
@@ -159,18 +162,6 @@ export const selectOptions = [
     {
         value: "113949522673653",
         label: "Port Grand (113949522673653)"
-    },
-    {
-        value: "113949522673652",
-        label: "Port Grand (113949522673652)"
-    },
-    {
-        value: "113949522673651",
-        label: "Port Grand (113949522673651)"
-    },
-    {
-        value: "113949522673650",
-        label: "Port Grand (113949522673650)"
     },
 ]
 

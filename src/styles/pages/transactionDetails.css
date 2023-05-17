@@ -1,0 +1,16 @@
+.breadcrumbs .angular-bracket,
+.breadcrumbs .first-child {
+  color: #acacae;
+}
+
+.breadcrumbs .angular-bracket {
+  font-size: 1.65rem;
+}
+
+.breadcrumbs .first-child,
+.breadcrumbs .last-child {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+}

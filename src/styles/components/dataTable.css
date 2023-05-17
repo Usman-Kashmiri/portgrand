@@ -10,7 +10,8 @@
 }
 .Cancel-status {
     background-color: #f95827;
-    color: #d5f3bf;
+    /* color: #d5f3bf; */
+    color: white;
     padding: 3px 10px;
 }
 
@@ -22,4 +23,9 @@ table {
 table td {
     color: #807b68;
     font-weight: 600;
+}
+
+.table-container {
+    max-height: 360px;
+    overflow-y: auto;
 }

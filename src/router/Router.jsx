@@ -7,6 +7,7 @@ import Content from '../pages/Content'
 import PageNotFound from '../pages/PageNotFound'
 import AddPayment from '../pages/AddPayment'
 import AddContent from '../pages/AddContent'
+import TransactionDetails from '../pages/TransactionDetails'
 const Router = () => {
   return (
     
@@ -14,6 +15,7 @@ const Router = () => {
         <Route path='/' element={<Home />} />
         <Route path='/alltools' element={<Alltool/>} />
         <Route path='/payment-activity' element={<PaymentActivity />} />
+        <Route path='/transaction-details' element={<TransactionDetails />} />
         <Route path='/content' element={<Content />} />
         <Route path='/add-payment' element={<AddPayment />} />
         <Route path='/postandreel' element={<Content />} />
