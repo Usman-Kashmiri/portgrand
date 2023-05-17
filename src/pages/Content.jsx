@@ -18,7 +18,7 @@ const Content = () => {
   const contenetabslinkarray = ['Published' , 'Schedule' , 'Drafts' , 'Expiring' , 'Expired']
   const [selectedDate, setSelectedDate] = useState([
     new Date(2023, 3, 17),
-    new Date(2023, 4, 7),
+    new Date(),
   ]);
 
   const [secopmnavactiv , setsecopmnavactiv] = useState('Published')
@@ -203,7 +203,7 @@ const Content = () => {
 
 </div>
 
-<Tabledetails/>
+<Tabledetails setSelectedDate={setSelectedDate} selectedDate={selectedDate} />
             </div>
 
           </Grid.Col>

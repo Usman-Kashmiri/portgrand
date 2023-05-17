@@ -29,6 +29,7 @@ export default function AuthUser() {
         const user_detail = JSON.parse(UserString);
         return user_detail;
     }
+    
     const alertMessage = (status, message) => {
         let icon = '';
         if (status == 'success') {

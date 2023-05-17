@@ -6,6 +6,7 @@ import PaymentActivity from '../pages/PaymentActivity'
 import Content from '../pages/Content'
 import PageNotFound from '../pages/PageNotFound'
 import AddPayment from '../pages/AddPayment'
+import AddContent from '../pages/AddContent'
 const Router = () => {
   return (
     
@@ -16,6 +17,7 @@ const Router = () => {
         <Route path='/content' element={<Content />} />
         <Route path='/add-payment' element={<AddPayment />} />
         <Route path='/postandreel' element={<Content />} />
+        <Route path='/add-content' element={<AddContent />} />
         <Route path='*' element={<PageNotFound />} />
     </Routes>
    
