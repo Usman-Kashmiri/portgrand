@@ -53,7 +53,7 @@
 .max-height-100vh {
   max-height: 100vh;
   height: 100%;
-  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .btn-grey {
@@ -91,5 +91,6 @@ button:hover {
 /* Imported CSS Files */
 @import './styles/pages/paymentActivity.css';
 @import './styles/pages/content.css';
+@import './styles/pages/transactionDetails.css';
 @import './styles/components/iconsSideNav.css';
 @import './styles/components/dataTable.css';
