@@ -66,7 +66,7 @@ const IconsSideNav = () => {
       {/* Lower icons */}
       <div className="d-flex flex-column gap-2 border-top px-1 pt-3 mt-4">
         <span>
-          <img src={gearIcon} alt="gearIcon" className="side-nav-icon" />
+          <img src={gearIcon} alt="gearIcon" width={24} />
         </span>
         <span>
           <img src={bellIcon} alt="bellIcon" className="side-nav-icon" />
