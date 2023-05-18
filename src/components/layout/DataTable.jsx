@@ -3,6 +3,7 @@ import { Table } from "@mantine/core";
 import AuthUser from "../../Config/UserAuth";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import dayjs from "dayjs";
 
 const DataTable = (props) => {
   const navigate = useNavigate();
@@ -98,7 +99,7 @@ const DataTable = (props) => {
             >
               {item.transaction_id}
             </td>
-            <td className="p-3 font-poppins">{item.date}</td>
+            <td className="p-3 font-poppins">{dayjs(item.date).format('DD MMM YYYY')}</td>
             <td className="p-3 font-poppins">Rs {item.amount}</td>
             <td className="p-3 font-poppins">
               <span className="d-flex align-items-center gap-1">

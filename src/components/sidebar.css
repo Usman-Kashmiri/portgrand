@@ -40,14 +40,24 @@
     padding: 5px 5px;
     
 }
+
+.navlinkdiv a {
+    color: black;
+}
+
 .navlinkdivactive{
     margin: 8px auto;
     width: 90%;
-    border: 2px solid #1e3050;
+    /* border: 2px solid #1e3050; */
+    background-color: #1e3050;
+    color: white;
     border-radius: 5px;
     /* background-color: purple; */
     padding: 5px 5px;
+}
 
+.navlinkdivactive a  {
+    color: white;
 }
 
 .rounded-circle{

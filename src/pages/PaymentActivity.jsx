@@ -56,7 +56,7 @@ const PaymentActivity = () => {
           >
             <span className="d-flex flex-column">
               <span className="font-poppins fs-7 text-grey-color">
-                current balance <i className="fa fa-info-circle"></i>
+                Current balance <i className="fa fa-info-circle"></i>
               </span>
               <span className="font-poppins fw-bold fs-5">Rs{totalAmount}</span>
             </span>
