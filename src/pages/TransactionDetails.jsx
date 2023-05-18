@@ -12,7 +12,10 @@ const TransactionDetails = () => {
   console.log(detail);
 
   return (
-    <div className="custom-grid max-width-100vw">
+    <div
+      className="custom-grid max-width-100vw"
+      style={{ backgroundColor: "#f2f2f2" }}
+    >
       <IconsSideNav />
       <Container className="px-5 py-4">
         <Grid className="justify-content-between">
@@ -64,7 +67,7 @@ const TransactionDetails = () => {
         <Grid className="justify-content-between gap-3 mt-4 px-2">
           <Grid.Col
             span="auto"
-            className="bg-white rounded-3 shadow-sm p-3 d-flex flex-column"
+            className="bg-white rounded-3 shadow p-3 d-flex flex-column"
           >
             <span>Amount</span>
             <span className="fw-bold font-montserrat fs-2 ps-3">
@@ -81,24 +84,80 @@ const TransactionDetails = () => {
               You're being billed because you've reached your billing threshold.
             </span>
           </Grid.Col>
-          <Grid.Col span={5} className="bg-white rounded-3 shadow-sm p-3">
+          <Grid.Col
+            span={5}
+            className="bg-white rounded-3 shadow p-3 d-flex flex-column justify-content-between"
+          >
             <Grid>
               <Grid.Col span={7} className="d-flex flex-column">
                 <span>Transaction ID</span>
-                <span>{detail.transaction_id}</span>
+                <span className="fw-bold">{detail.transaction_id}</span>
               </Grid.Col>
-              <Grid.Col span={4} className="d-flex flex-column">
+              <Grid.Col span={5} className="d-flex flex-column">
                 <span>Date</span>
-                <span className="px-3 py-2" style={{background:'#f1f1f3'}}>{detail.date}</span>
+                <span
+                  className="px-3 py-2 rounded-3"
+                  style={{ background: "#f1f1f3" }}
+                >
+                  <i className="fa fa-calendar me-1"></i> {detail.date}
+                </span>
               </Grid.Col>
             </Grid>
-            <Grid.Col span={7}></Grid.Col>
-            <Grid.Col span={4}></Grid.Col>
+            <Grid>
+              <Grid.Col span={7} className="d-flex flex-column">
+                <span>Payment method</span>
+                <span className="d-flex align-items-center gap-1">
+                  <img
+                    width={35}
+                    src={detail?.payment_method_icon}
+                    alt="payment type"
+                  />
+                  <span className="d-flex flex-column">
+                    <span>
+                      {detail?.payment_method} · {detail?.card_number}
+                    </span>
+                  </span>
+                </span>
+              </Grid.Col>
+              <Grid.Col span={5} className="d-flex flex-column">
+                <span>Reference number</span>
+                <span>{detail?.payment_token}</span>
+              </Grid.Col>
+            </Grid>
           </Grid.Col>
           <Grid.Col
             span={3}
-            className="bg-white rounded-3 shadow-sm p-3"
-          ></Grid.Col>
+            className="bg-white rounded-3 shadow p-3 d-flex flex-column justify-content-between"
+          >
+            <Grid>
+              <Grid.Col span={8} className="d-flex flex-column">
+                <span>Ad account</span>
+                <span className="fw-bold" style={{ fontSize: "14px" }}>
+                  23842634005140183
+                </span>
+              </Grid.Col>
+              <Grid.Col span={4} className="d-flex flex-column">
+                <span>Product</span>
+                <span>Facebook</span>
+              </Grid.Col>
+            </Grid>
+            <Grid>
+              <Grid.Col
+                span={5}
+                className="d-flex flex-column align-items-start"
+              >
+                <span>Status</span>
+                <span
+                  style={{ fontSize: "14px" }}
+                  className={
+                    detail?.payment_status + "-status rounded-pill fw-bold"
+                  }
+                >
+                  {detail?.payment_status}
+                </span>
+              </Grid.Col>
+            </Grid>
+          </Grid.Col>
         </Grid>
       </Container>
     </div>
