@@ -11,12 +11,11 @@ import help from "./images/help.png";
 import Homedetail from "./homedetail";
 
 const Sidebar = ({ Homepage }) => {
-
   console.log(window.location.pathname);
-  
+
   const [active, setactive] = useState("");
 
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div style={{ display: "flex" }}>

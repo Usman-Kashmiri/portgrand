@@ -1,4 +1,5 @@
 import { Grid } from "@mantine/core";
+import dayjs from "dayjs";
 import React from "react";
 import { Container } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
@@ -99,7 +100,7 @@ const TransactionDetails = () => {
                   className="px-3 py-2 rounded-3"
                   style={{ background: "#f1f1f3" }}
                 >
-                  <i className="fa fa-calendar me-1"></i> {detail.date}
+                  <i className="fa fa-calendar me-1"></i> {dayjs(detail.date).format('DD MMM YYYY')}
                 </span>
               </Grid.Col>
             </Grid>

@@ -6,10 +6,10 @@ import bellhornIcon from "../../assets/images/icons/bellhorn.png";
 import commentsIcon from "../../assets/images/icons/comments.png";
 import insightIcon from "../../assets/images/icons/insight.png";
 import searchIcon from "../../assets/images/icons/search.png";
-import windowscon from "../../assets/images/icons/windows.png";
+import windowscon from "../../assets/images/icons/windows2.png";
 import bellIcon from "../../assets/images/icons/bell2.png";
+import homeIcon from "../../assets/images/icons/home2.png";
 import gearIcon from "../../assets/images/icons/gear.png";
-import homeIcon from "../../assets/images/icons/home.png";
 import faqIcon from "../../assets/images/icons/faq.png";
 
 const ContentIconSideNav = () => {
@@ -41,37 +41,37 @@ const ContentIconSideNav = () => {
       {/* icons navigation */}
       <div className="d-flex gap-3 flex-column align-items-center mt-4">
         <span>
-          <img src={homeIcon} alt="homeIcon" className="side-nav-icon cursor-pointer"  onClick={() => navigate("/")} />
+          <img src={homeIcon} alt="homeIcon" width={24} className="cursor-pointer"  onClick={() => navigate("/")} />
         </span>
         <span>
-          <img src={bellIcon} alt="bellIcon" className="side-nav-icon" />
+          <img src={bellIcon} alt="bellIcon" width={24} />
         </span>
         <span>
           <img
             src={commentsIcon}
             alt="commentsIcon"
-            className="side-nav-icon"
+            width={22}
           />
         </span>
         <span>
           <img
             src={calenderIcon}
             alt="calenderIcon"
-            className="side-nav-icon"
+            width={25}
           />
         </span>
-        <span>
-          <img src={windowscon} alt="windowscon" className="rounded-3 cursor-pointer"  onClick={() => navigate("/content")} />
+        <span className="active-icon">
+          <img src={windowscon} alt="windowscon" width={24} className="rounded-3 cursor-pointer"  onClick={() => navigate("/content")} />
         </span>
         <span>
           <img
             src={bellhornIcon}
             alt="bellhornIcon"
-            className="side-nav-icon"
+            width={24}
           />
         </span>
         <span>
-          <img src={insightIcon} alt="insightIcon" className="side-nav-icon" />
+          <img src={insightIcon} alt="insightIcon" width={24} />
         </span>
         <span>
           <img
@@ -84,7 +84,7 @@ const ContentIconSideNav = () => {
           <img src={searchIcon} alt="searchIcon" className="side-nav-icon" />
         </span>
         <span>
-          <img src={gearIcon} alt="gearIcon" className="side-nav-icon" />
+          <img src={gearIcon} alt="gearIcon" width={24} />
         </span>
         <span>
           <img src={faqIcon} alt="faqIcon" className="side-nav-icon" />
