@@ -2,8 +2,9 @@ import { Container, Grid, Select } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 import React, { useState } from "react";
 import IconsSideNav from "../components/layout/IconsSideNav";
-import {  selectOptions2 } from "../data/data";
+import { selectOptions2 } from "../data/data";
 import DataTable from "../components/layout/DataTable";
+import CurrencyFormat from "react-currency-format";
 
 const PaymentActivity = () => {
   let [selectedDate, setSelectedDate] = useState([
@@ -58,7 +59,16 @@ const PaymentActivity = () => {
               <span className="font-poppins fs-7 text-grey-color">
                 Current balance <i className="fa fa-info-circle"></i>
               </span>
-              <span className="font-poppins fw-bold fs-5">Rs{totalAmount}</span>
+              <span className="font-poppins fw-bold fs-5">
+                <CurrencyFormat
+                  value={totalAmount}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  decimalScale={2}
+                  fixedDecimalScale={true}
+                  prefix={"Rs"}
+                />
+              </span>
             </span>
             <button className="btn-blue border-0 px-3 py-2 rounded-3 font-poppins">
               Pay now
