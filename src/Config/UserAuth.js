@@ -57,9 +57,7 @@ export default function AuthUser() {
         baseURL: 'https://portgrand.xiomstudio.com/api/',
         headers: {
             "Content-Type": "multipart/form-data",
-
         },
-
 
     });
 

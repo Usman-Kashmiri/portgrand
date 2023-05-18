@@ -2,7 +2,7 @@ import { Container, Grid, Select } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 import React, { useState } from "react";
 import IconsSideNav from "../components/layout/IconsSideNav";
-import { selectOptions, selectOptions2 } from "../data/data";
+import {  selectOptions2 } from "../data/data";
 import DataTable from "../components/layout/DataTable";
 
 const PaymentActivity = () => {

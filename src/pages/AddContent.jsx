@@ -5,6 +5,7 @@ import { Avatar, Grid, Group, Input, Select, Text, TextInput, Button, Loader, Fi
 import { paymentmethods } from '../data/data'
 import AuthUser from '../Config/UserAuth';
 
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -13,7 +14,15 @@ const AddContent = () => {
 
     const { http, alertMessage } = AuthUser();
     const [alert, setAlert] = useState('')
+
+
+    const location = useLocation();
+    const detail = location.state;
+    const [isEdit, setIsEdit] = useState(false)
+
+
     const [inputVal, setInputVal] = useState({
+        id: '',
         title: '',
         reach: '',
         date_published: '',
@@ -22,7 +31,15 @@ const AddContent = () => {
     })
 
 
-    const [inputFile, setInputFile] = useState();
+    const [inputFile, setInputFile] = useState('');
+
+    useEffect(() => {
+        if (detail) {
+            setInputVal({ ...inputVal, ...detail });
+            setIsEdit(true)
+        }
+    }, [detail]);
+
 
     const handleInput = (e, ename = '') => {
         if (ename == '') {
@@ -33,20 +50,32 @@ const AddContent = () => {
         } else {
             setInputVal({ ...inputVal, [ename]: e });
 
-        } 
+        }
     }
 
     const [isSubmit, setIsSubmit] = useState(false)
     const handleSubmit = async (e) => {
         e.preventDefault()
         setIsSubmit(true)
+
+        
+        let apiPath = 'addContent'
+        if (isEdit) {
+            apiPath = 'updatecontent'
+        }
+
+
         let formdata = new FormData();
         formdata.append('file', inputFile);
         formdata.append('data', JSON.stringify(inputVal));
-        http.post('addContent', formdata).then((res) => {
+        http.post(apiPath, formdata).then((res) => {
             setAlert(alertMessage(res.data.status, res.data.msg));
             if (res.data.status == 'success') {
-                e.target.reset();
+                if (!isEdit) {
+                    
+                    e.target.reset();
+                }
+        
                 setIsSubmit(false)
             }
         }).catch((e) => {
@@ -83,7 +112,7 @@ const AddContent = () => {
             >
                 <Grid className="justify-content-between">
                     <Grid.Col span={11}>
-                        <span className="font-poppins fw-bold fs-5">Add Content</span>
+                        <span className="font-poppins fw-bold fs-5"> {isEdit? 'Update' : 'Add'} Content</span>
                     </Grid.Col>
                     <Grid.Col span={1}>
                         <button onClick={() => {
@@ -103,6 +132,7 @@ const AddContent = () => {
                                 radius="md"
                                 size="md"
                                 name='title'
+                                value={inputVal.title}
                                 onChange={handleInput}
                                 label='Title'
                             />
@@ -122,6 +152,7 @@ const AddContent = () => {
                                 radius="md"
                                 size="md"
                                 type='text'
+                                value={inputVal.reach}
                                 name='reach'
                                 onChange={handleInput}
                             />
@@ -136,6 +167,7 @@ const AddContent = () => {
                                 size="md"
                                 type='date'
                                 name='date_published'
+                                value={inputVal.date_published}
                                 onChange={handleInput}
                             />
 
@@ -150,6 +182,7 @@ const AddContent = () => {
                                 size="md"
                                 type='text'
                                 name='engagements'
+                                value={inputVal.engagements}
                                 onChange={handleInput}
                             />
 
@@ -163,6 +196,7 @@ const AddContent = () => {
                                 radius="md"
                                 size="md"
                                 type='text'
+                                value={inputVal.like_reactions}
                                 onChange={handleInput}
                             />
                         </Grid.Col>
@@ -170,7 +204,7 @@ const AddContent = () => {
 
                             <Button variant="gradient" disabled={isSubmit} type='submit' gradient={{ from: 'indigo', to: 'cyan' }}>
                                 {!isSubmit ?
-                                    'Save Changes'
+                                    (<>{isEdit ? 'Update Changes' : 'Save Changes'}</>)
                                     : (<> loading <Loader ml={'lg'} size={'sm'} /></>)
                                 }
                             </Button>

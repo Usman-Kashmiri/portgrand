@@ -127,7 +127,7 @@ const DataTable = (props) => {
                   <i className="fa fa-download"></i>
                 </button>
                 <button  type="button" onClick={() =>
-                  navigate("/add-payment", { state: item })
+                  navigate("/update-payment", { state: item })
                 }
                  className="py-2 px-3 btn-grey border-0 rounded-3">
                   <i className="fa fa-edit"></i>

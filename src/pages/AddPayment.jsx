@@ -10,31 +10,33 @@ import { useLocation } from 'react-router-dom';
 
 
 
-const AddPayment = () => {
+const AddPayment = () => { 
 
 
     const { http, alertMessage } = AuthUser();
     const [alert, setAlert] = useState('')
 
-    const location = useLocation(); 
+    const location = useLocation();
     const detail = location.state;
-
+    const [isEdit, setIsEdit] = useState(false)
     const [inputVal, setInputVal] = useState({
+        id: '',
         transaction_id: '',
         date: '',
         amount: '',
         payment_method_id: '',
         payment_status: '',
         invoice_id: '',
+        card_number: '',
     })
     useEffect(() => {
-        if(detail){
+        if (detail) {
             setInputVal({ ...inputVal, ...detail });
-        } 
-     console.log(inputVal); 
+            setIsEdit(true)
+        }
     }, [detail]);
 
-   
+
     function removeNonNumeric(inputString) {
         return inputString.replace(/[^0-9.]/g, '')
     }
@@ -56,18 +58,38 @@ const AddPayment = () => {
 
     const [isSubmit, setIsSubmit] = useState(false)
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         setIsSubmit(true)
+
+        let apiPath = 'addPayment'
+        if (isEdit) {
+            apiPath = 'updatepaymentactivity'
+        }
+
         let formdata = new FormData();
         formdata.append('data', JSON.stringify(inputVal));
-        http.post('addPayment', formdata).then((res) => {
+        await http.post(apiPath, formdata).then((res) => {
+
+
+            setTimeout(() => {
+                setAlert(' ')
+            }, 2000);
             setAlert(alertMessage(res.data.status, res.data.msg));
             if (res.data.status == 'success') {
-                e.target.reset();
                 setIsSubmit(false)
+                if (!isEdit) {
+                    setInputVal(prevState => {
+                        return Object.entries(prevState).reduce((resetState, [key]) => {
+                            resetState[key] = '';
+                            return resetState;
+                        }, {});
+                    });
+                }
+                
             }
-        }).catch((e) => {
-            console.log(e);
+
+        }).catch((err) => {
+            console.log(err);
             setIsSubmit(false)
         })
     }
@@ -100,117 +122,131 @@ const AddPayment = () => {
             >
                 <Grid className="justify-content-between">
                     <Grid.Col span={11}>
-                        <span className="font-poppins fw-bold fs-5">Add Payment</span>
+                        <span className="font-poppins fw-bold fs-5">{isEdit ? 'Update' : 'Add'} Payment</span>
                     </Grid.Col>
                     <Grid.Col span={1}>
                         <button onClick={() => {
                             window.history.back();
                         }} className='btn btn-blue '>Go Back</button>
-                   
-                </Grid.Col>
-
-            </Grid>
-            <form onSubmit={handleSubmit}>
-                {alert}
-                <Grid gutter={5} gutterXs="md" gutterMd="xl" gutterXl={50} className='justify-content-between mt-4 p-2 bg-white rounded-container'>
-                    <Grid.Col span={6}>
-
-                        <TextInput
-                            placeholder="x000xxxxxxx-xxxxx9"
-                            radius="md"
-                            size="md"
-                            name='transaction_id'
-                            onChange={handleInput}
-                            label='Transaction ID'
-                            value={inputVal.transaction_id}
-                        />
-                    </Grid.Col>
-                    <Grid.Col span={6}>
-                        <TextInput
-                            placeholder="x000xxxxxxx-xxxxx9"
-                            radius="md"
-                            size="md"
-                            label="Date"
-                            name='date'
-                            type='date'
-                            value={inputVal.date}
-                            onChange={handleInput}
-                        />
-
-
-                    </Grid.Col>
-                    <Grid.Col span={6}>
-                        <TextInput
-                            placeholder="Amount"
-                            label="Amount"
-                            radius="md"
-                            size="md"
-                            type='text'
-                            name='amount'
-                            value={inputVal.amount}
-                            onChange={handleInput}
-                        />
-
 
                     </Grid.Col>
 
-                    <Grid.Col span={6}>
-                        <Select
-                            label="Select Payment Method"
-                            placeholder="Pick one"
-                            itemComponent={SelectItem}
-                            data={paymentmethods}
-                            searchable
-                            maxDropdownHeight={400}
-                            nothingFound="Nobody here"
-                            value={inputVal.payment_method_id}
-                            onChange={(e) => handleInput(e, 'payment_method')}
-                            filter={(value, item) =>
-                                item.label.includes(value.trim()) ||
-                                item.description.includes(value.trim())
-                            }
-                        /> 
-
-                    </Grid.Col>
-                    <Grid.Col span={6}>
-                        <Select
-                            label="Payment status"
-                            placeholder="Payment status"
-                            value={inputVal.payment_status}
-                            onChange={(e) => handleInput(e, 'payment_status')}
-                            data={[
-                                { value: 'Paid', label: 'Paid' },
-                                { value: 'Pending', label: 'Pending' },
-                                { value: 'Cancel', label: 'Cancel' },
-                            ]}
-                        />
-
-                    </Grid.Col>
-                    <Grid.Col span={6}>
-                        <TextInput
-                            placeholder="Enter VAt invoice ID"
-                            label="VAt invoice ID"
-                            name='invoice_id'
-                            radius="md"
-                            size="md"
-                            type='text'
-                            value={inputVal.invoice_id}
-                            onChange={handleInput}
-                        />
-                    </Grid.Col>
-                    <Grid.Col span={12}>
-
-                        <Button variant="gradient" disabled={isSubmit} type='submit' gradient={{ from: 'indigo', to: 'cyan' }}>
-                            {!isSubmit ?
-                                'Save Changes'
-                                : (<> loading <Loader ml={'lg'} size={'sm'} /></>)
-                            }
-                        </Button>
-
-                    </Grid.Col>
                 </Grid>
-            </form>
-        </Container>
+                <form onSubmit={(e) => handleSubmit(e)}>
+                    {alert}
+                    <Grid gutter={5} gutterXs="md" gutterMd="xl" gutterXl={50} className='justify-content-between mt-4 p-2 bg-white rounded-container'>
+                        <Grid.Col span={6}>
+
+                            <TextInput
+                                placeholder="x000xxxxxxx-xxxxx9"
+                                radius="md"
+                                size="md"
+                                name='transaction_id'
+                                onChange={handleInput}
+                                label='Transaction ID'
+                                value={inputVal.transaction_id}
+                            />
+                        </Grid.Col>
+                        <Grid.Col span={6}>
+                            <TextInput
+                                placeholder="x000xxxxxxx-xxxxx9"
+                                radius="md"
+                                size="md"
+                                label="Date"
+                                name='date'
+                                type='date'
+                                value={inputVal.date}
+                                onChange={handleInput}
+                            />
+
+
+                        </Grid.Col>
+                        <Grid.Col span={6}>
+                            <TextInput
+                                placeholder="Amount"
+                                label="Amount"
+                                radius="md"
+                                size="md"
+                                type='text'
+                                name='amount'
+                                value={inputVal.amount}
+                                onChange={handleInput}
+                            />
+
+
+                        </Grid.Col>
+                        <Grid.Col span={6}>
+                            <TextInput
+                                placeholder="Card Number"
+                                label="Card Number"
+                                radius="md"
+                                size="md"
+                                type='text'
+                                name='card_number'
+                                value={inputVal.card_number}
+                                onChange={handleInput}
+                            />
+
+
+                        </Grid.Col>
+
+                        <Grid.Col span={6}>
+                            <Select
+                                label="Select Payment Method"
+                                placeholder="Pick one"
+                                itemComponent={SelectItem}
+                                data={paymentmethods}
+                                searchable
+                                maxDropdownHeight={400}
+                                nothingFound="Nobody here"
+                                value={inputVal.payment_method_id}
+                                onChange={(e) => handleInput(e, 'payment_method_id')}
+                                filter={(value, item) =>
+                                    item.label.includes(value.trim()) ||
+                                    item.description.includes(value.trim())
+                                }
+                            />
+
+                        </Grid.Col>
+                        <Grid.Col span={6}>
+                            <Select
+                                label="Payment status"
+                                placeholder="Payment status"
+                                value={inputVal.payment_status}
+                                onChange={(e) => handleInput(e, 'payment_status')}
+                                data={[
+                                    { value: 'Paid', label: 'Paid' },
+                                    { value: 'Pending', label: 'Pending' },
+                                    { value: 'Cancel', label: 'Cancel' },
+                                ]}
+                            />
+
+                        </Grid.Col>
+                        <Grid.Col span={6}>
+                            <TextInput
+                                placeholder="Enter VAt invoice ID"
+                                label="VAt invoice ID"
+                                name='invoice_id'
+                                radius="md"
+                                size="md"
+                                type='text'
+                                value={inputVal.invoice_id}
+                                onChange={handleInput}
+                            />
+                        </Grid.Col>
+                        <Grid.Col span={12}>
+
+                            <Button variant="gradient" disabled={isSubmit} type='submit' gradient={{ from: 'indigo', to: 'cyan' }}>
+                                {!isSubmit ?
+                                    (<>{isEdit ? 'Update Changes' : 'Save Changes'}</>)
+                                    : (<> loading <Loader ml={'lg'} size={'sm'} /></>)
+                                }
+                            </Button>
+
+                        </Grid.Col>
+                    </Grid>
+                </form>
+            </Container>
         </div >
     )
 }

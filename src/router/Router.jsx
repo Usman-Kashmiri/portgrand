@@ -18,8 +18,10 @@ const Router = () => {
         <Route path='/transaction-details' element={<TransactionDetails />} />
         <Route path='/content' element={<Content />} />
         <Route path='/add-payment' element={<AddPayment />} />
+        <Route path='/update-payment' element={<AddPayment />} />
         <Route path='/postandreel' element={<Content />} />
         <Route path='/add-content' element={<AddContent />} />
+        <Route path='/update-content' element={<AddContent />} />
         <Route path='*' element={<PageNotFound />} />
     </Routes>
    

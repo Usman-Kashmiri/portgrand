@@ -1,7 +1,6 @@
 import React from 'react'
 import Sidebar from '../components/sidebar'
-import Homedetail from '../components/homedetail'
-import { Row , Col } from 'react-bootstrap'
+import Homedetail from '../components/homedetail' 
 
 
 const Home = () => {
