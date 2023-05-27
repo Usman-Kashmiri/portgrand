@@ -2,10 +2,9 @@ import React, { useState, useEffect, forwardRef } from 'react'
 import IconsSideNav from "../components/layout/IconsSideNav";
 import { Container } from 'react-bootstrap';
 import { Avatar, Grid, Group, Input, Select, Text, TextInput, Button, Loader, FileInput } from '@mantine/core';
-import { paymentmethods } from '../data/data'
 import AuthUser from '../Config/UserAuth';
-
-import { useLocation } from 'react-router-dom';
+import { DatePickerInput } from "@mantine/dates";
+import { json, useLocation } from 'react-router-dom';
 
 
 
@@ -14,7 +13,10 @@ const AddContent = () => {
 
     const { http, alertMessage } = AuthUser();
     const [alert, setAlert] = useState('')
-
+    const [selectedDate, setSelectedDate] = useState([
+        new Date(2023, 3, 17),
+        new Date(),
+    ]);
 
     const location = useLocation();
     const detail = location.state;
@@ -29,9 +31,24 @@ const AddContent = () => {
         engagements: '',
         like_reactions: '',
     })
+    function getDatesInRange(startDate, endDate) {
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+        const dateArray = [];
+
+        // Iterate through each day between start and end dates
+        for (let date = start; date <= end; date.setDate(date.getDate() + 1)) {
+            const currentDate = new Date(date);
+            const formattedDate = currentDate.toLocaleDateString('en-GB');
+            dateArray.push(formattedDate);
+        }
+
+        return dateArray;
+    }
 
 
-    const [inputFile, setInputFile] = useState('');
+
+    const [inputFile, setInputFile] = useState([]);
 
     useEffect(() => {
         if (detail) {
@@ -41,55 +58,52 @@ const AddContent = () => {
     }, [detail]);
 
 
-    const handleInput = (e, ename = '') => {
-        if (ename == '') {
-            let name = e.target.name;
-            let value = e.target.value;
 
-            setInputVal({ ...inputVal, [name]: value });
-        } else {
-            setInputVal({ ...inputVal, [ename]: e });
-
-        }
-    }
 
     const [isSubmit, setIsSubmit] = useState(false)
     const handleSubmit = async (e) => {
         e.preventDefault()
-        setIsSubmit(true)
 
-        
+        const date = getDatesInRange(selectedDate[0], selectedDate[1]);
+     
+        if (inputFile.length !== date.length) {
+            setAlert(alertMessage('warning', 'image and date lenght not equal'))
+            return;
+        }
+        // setIsSubmit(true)
         let apiPath = 'addContent'
         if (isEdit) {
             apiPath = 'updatecontent'
         }
 
-
         let formdata = new FormData();
-        formdata.append('file', inputFile);
-        formdata.append('data', JSON.stringify(inputVal));
-        http.post(apiPath, formdata).then((res) => {
-            setAlert(alertMessage(res.data.status, res.data.msg));
-            if (res.data.status == 'success') {
-                if (!isEdit) {
-                    
-                    e.target.reset();
+        date.forEach((item) => formdata.append('date[]', item));
+        inputFile.forEach((item) => formdata.append('file[]', item));
+        http.post(apiPath, formdata)
+            .then((res) => {
+                setAlert(alertMessage(res.data.status, res.data.msg));
+                if (res.data.status === 'success') {
+                    if (!isEdit) {
+                        e.target.reset();
+                    }
+                    setIsSubmit(false);
                 }
-        
-                setIsSubmit(false)
-            }
-        }).catch((e) => {
-            console.log(e);
-            setIsSubmit(false)
-        })
+            })
+            .catch((error) => {
+                console.log(error);
+                setIsSubmit(false);
+            });
     }
 
-
+    useEffect(() => {
+        setTimeout(() => {
+            setAlert(' ');
+        }, 5000);
+    }, [alert]);
     const SelectItem = forwardRef(({ image, label, description, ...others }, ref) => (
         <div ref={ref} {...others}>
             <Group noWrap>
                 <Avatar className='bg-grey-color ' style={{ objectFit: 'cover', padding: '2px' }} src={image} />
-
                 <div>
                     <Text size="sm">{label}</Text>
                     <Text size="xs" opacity={0.65}>
@@ -106,102 +120,44 @@ const AddContent = () => {
         <div className="payment-activity custom-grid max-width-100vw">
             <IconsSideNav />
 
-            <Container
-                fluid
-                className="bg-grey-color py-4 px-5 d-flex flex-column w-100"
-            >
+            <Container fluid className="bg-grey-color py-4 px-5 d-flex flex-column w-100" >
                 <Grid className="justify-content-between">
                     <Grid.Col span={11}>
-                        <span className="font-poppins fw-bold fs-5"> {isEdit? 'Update' : 'Add'} Content</span>
+                        <span className="font-poppins fw-bold fs-5"> {isEdit ? 'Update' : 'Add'} Content</span>
                     </Grid.Col>
                     <Grid.Col span={1}>
                         <button onClick={() => {
                             window.history.back();
                         }} className='btn btn-blue '>Go Back</button>
-
                     </Grid.Col>
-
                 </Grid>
                 <form onSubmit={handleSubmit}>
                     {alert}
                     <Grid gutter={5} gutterXs="md" gutterMd="xl" gutterXl={50} className='justify-content-between mt-4 p-2 bg-white rounded-container'>
+
                         <Grid.Col span={6}>
 
-                            <TextInput
-                                placeholder="Enter content title"
-                                radius="md"
-                                size="md"
-                                name='title'
-                                value={inputVal.title}
-                                onChange={handleInput}
-                                label='Title'
-                            />
-                        </Grid.Col>
-                        <Grid.Col span={6}>
                             <FileInput
                                 label="Upload Image"
                                 name='file'
                                 placeholder="Upload files"
                                 accept="image/png,image/jpeg"
+                                multiple
                                 onChange={(e) => setInputFile(e)} />
-                        </Grid.Col>
-                        <Grid.Col span={6}>
-                            <TextInput
-                                placeholder="Reach"
-                                label="Reach"
-                                radius="md"
-                                size="md"
-                                type='text'
-                                value={inputVal.reach}
-                                name='reach'
-                                onChange={handleInput}
-                            />
-
-
-                        </Grid.Col>
-                        <Grid.Col span={6}>
-                            <TextInput
-                                placeholder="Date published"
-                                label="Date published"
-                                radius="md"
-                                size="md"
-                                type='date'
-                                name='date_published'
-                                value={inputVal.date_published}
-                                onChange={handleInput}
-                            />
-
-
+                            <p className='text-end'>Total selected files (<b> {inputFile?.length} </b>) </p>
                         </Grid.Col>
 
-                        <Grid.Col span={6}>
-                            <TextInput
-                                placeholder="Engagements"
-                                label="Engagements"
-                                radius="md"
-                                size="md"
-                                type='text'
-                                name='engagements'
-                                value={inputVal.engagements}
-                                onChange={handleInput}
-                            />
-
-                        </Grid.Col>
-
-                        <Grid.Col span={6}>
-                            <TextInput
-                                placeholder="Likes and reaction"
-                                label="Likes and reaction"
-                                name='like_reactions'
-                                radius="md"
-                                size="md"
-                                type='text'
-                                value={inputVal.like_reactions}
-                                onChange={handleInput}
+                        <Grid.Col span={6} mt={'15px'}>
+                            <DatePickerInput
+                                className="select-grey-color font-poppins contentdatepicker"
+                                placeholder="Pick dates range"
+                                value={selectedDate}
+                                onChange={setSelectedDate}
+                                type="range"
                             />
                         </Grid.Col>
+
                         <Grid.Col span={12}>
-
                             <Button variant="gradient" disabled={isSubmit} type='submit' gradient={{ from: 'indigo', to: 'cyan' }}>
                                 {!isSubmit ?
                                     (<>{isEdit ? 'Update Changes' : 'Save Changes'}</>)

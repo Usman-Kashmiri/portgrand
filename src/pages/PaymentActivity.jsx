@@ -7,18 +7,22 @@ import DataTable from "../components/layout/DataTable";
 import CurrencyFormat from "react-currency-format";
 
 const PaymentActivity = () => {
-  let [selectedDate, setSelectedDate] = useState([
-    new Date(2023, 0, 1),
-    new Date(),
+  const [selectedDate, setSelectedDate] = useState([
+    new Date(2023, 4, 1),
+    new Date(2023, 4, 7),
   ]);
+  const dateFormat = 'DD MMMM YYYY';
+
+  const handleChange = (value) => {
+    setSelectedDate(value);
+  };
+
 
   let [totalAmount, setTotalAmount] = useState(0);
   return (
     <div className="payment-activity custom-grid max-width-100vw">
       <IconsSideNav />
-
       {/* Main content */}
-
       <Container
         fluid
         className="bg-grey-color py-4 px-5 d-flex flex-column w-100"
@@ -102,10 +106,11 @@ const PaymentActivity = () => {
             className="d-flex justify-content-end align-items-center gap-3"
           >
             <DatePickerInput
-              className="select-grey-color  font-poppins"
+              valueFormat={dateFormat} // Set the desired date format
+              className="select-grey-color font-poppins contentdatepicker"
               placeholder="Pick dates range"
               value={selectedDate}
-              onChange={setSelectedDate}
+              onChange={handleChange}
               type="range"
             />
           </Grid.Col>
@@ -126,6 +131,7 @@ const PaymentActivity = () => {
               setTotalAmount={setTotalAmount}
               totalAmount={totalAmount}
             />
+
           </Grid.Col>
         </Grid>
       </Container>

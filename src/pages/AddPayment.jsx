@@ -5,12 +5,13 @@ import { Avatar, Grid, Group, Input, Select, Text, TextInput, Button, Loader } f
 import { paymentmethods } from '../data/data'
 import AuthUser from '../Config/UserAuth';
 import { useLocation } from 'react-router-dom';
+import { DatePickerInput } from '@mantine/dates';
 
 
 
 
 
-const AddPayment = () => { 
+const AddPayment = () => {
 
 
     const { http, alertMessage } = AuthUser();
@@ -18,16 +19,19 @@ const AddPayment = () => {
 
     const location = useLocation();
     const detail = location.state;
+  
     const [isEdit, setIsEdit] = useState(false)
     const [inputVal, setInputVal] = useState({
         id: '',
         transaction_id: '',
-        date: '',
         amount: '',
         payment_method_id: '',
         payment_status: '',
+        dateFrom: '',
+        dateTo: '',
         invoice_id: '',
         card_number: '',
+        card_ref_number: '',
     })
     useEffect(() => {
         if (detail) {
@@ -35,6 +39,18 @@ const AddPayment = () => {
             setIsEdit(true)
         }
     }, [detail]);
+    console.log('sae ', new Date(inputVal.dateFrom).getMonth());
+
+    const [selectedDate, setSelectedDate] = useState(detail  ? [new Date(detail?.dateFrom), new Date(detail?.dateTo)] : [
+        new Date(2023, 4, 1),
+        new Date(2023, 4, 7),
+    ]);
+ 
+    const dateFormat = 'DD MMMM, YYYY';
+
+    const handleChange = (value) => {
+        setSelectedDate(value);  
+    };
 
 
     function removeNonNumeric(inputString) {
@@ -68,6 +84,8 @@ const AddPayment = () => {
 
         let formdata = new FormData();
         formdata.append('data', JSON.stringify(inputVal));
+        formdata.append("datefrom", selectedDate[0]);
+        formdata.append("dateto", selectedDate[1]);
         await http.post(apiPath, formdata).then((res) => {
 
 
@@ -85,7 +103,7 @@ const AddPayment = () => {
                         }, {});
                     });
                 }
-                
+
             }
 
         }).catch((err) => {
@@ -148,17 +166,16 @@ const AddPayment = () => {
                             />
                         </Grid.Col>
                         <Grid.Col span={6}>
-                            <TextInput
-                                placeholder="x000xxxxxxx-xxxxx9"
-                                radius="md"
-                                size="md"
-                                label="Date"
-                                name='date'
-                                type='date'
-                                value={inputVal.date}
-                                onChange={handleInput}
-                            />
 
+                            <DatePickerInput
+                                valueFormat={dateFormat} // Set the desired date format
+                                className="select-grey-color font-poppins contentdatepicker"
+                                placeholder="Pick dates range"
+                                label="Week date"
+                                value={selectedDate}
+                                onChange={handleChange}
+                                type="range"
+                            />
 
                         </Grid.Col>
                         <Grid.Col span={6}>
@@ -184,6 +201,20 @@ const AddPayment = () => {
                                 type='text'
                                 name='card_number'
                                 value={inputVal.card_number}
+                                onChange={handleInput}
+                            />
+
+
+                        </Grid.Col>
+                        <Grid.Col span={6}>
+                            <TextInput
+                                placeholder="Card Reference Number"
+                                label="Card Reference Number"
+                                radius="md"
+                                size="md"
+                                type='text'
+                                name='card_ref_number'
+                                value={inputVal.card_ref_number}
                                 onChange={handleInput}
                             />
 

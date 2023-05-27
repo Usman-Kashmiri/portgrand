@@ -1,16 +1,65 @@
 import { Grid } from "@mantine/core";
 import dayjs from "dayjs";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import IconsSideNav from "../components/layout/IconsSideNav";
+import { DatePickerInput } from "@mantine/dates";
+import AuthUser from "../Config/UserAuth";
+import CurrencyFormat from "react-currency-format";
 
 const TransactionDetails = () => {
   const location = useLocation();
 
   const detail = location.state;
+  const [inputVal, setInputVal] = useState({
+    id: '',
+    transaction_id: '',
+    amount: '',
+    payment_method_id: '',
+    payment_status: '',
+    dateFrom: '',
+    dateTo: '',
+    invoice_id: '',
+    card_number: '',
+    card_ref_number: '',
+  })
 
-  console.log(detail);
+  useEffect(() => {
+    if (detail) {
+      setInputVal({ ...inputVal, ...detail });
+
+    }
+  }, [detail]);
+
+
+  const { http } = AuthUser();
+
+  const [selectedDate, setSelectedDate] = useState(detail ? [new Date(detail?.dateFrom), new Date(detail?.dateTo)] : [
+    new Date(2023, 4, 1),
+    new Date(2023, 4, 7),
+  ]);
+
+  const dateFormat = 'DD MMMM YYYY';
+
+  const handleChange = async (value) => {
+
+    setSelectedDate(value);
+    const formdata = new FormData();
+    if (value[0] == null || value[1] == null) {
+      return
+    }
+    formdata.append("datefrom", value[0]);
+    formdata.append("dateto", value[1]);
+    await http.post("paymentactivity", formdata)
+      .then((res) => {
+
+        let gg = res.data.data[0];
+        setInputVal({ ...inputVal, ...gg });
+
+      })
+      .catch((e) => { });
+  };
 
   return (
     <div
@@ -19,6 +68,7 @@ const TransactionDetails = () => {
     >
       <IconsSideNav />
       <Container className="px-5 py-4">
+
         <Grid className="justify-content-between">
           <Grid.Col
             span={6}
@@ -65,26 +115,49 @@ const TransactionDetails = () => {
             </button>
           </Grid.Col>
         </Grid>
+
         <Grid className="justify-content-between gap-3 mt-4 px-2">
           <Grid.Col
+          
             span="auto"
             className="bg-white rounded-3 shadow p-3 d-flex flex-column"
           >
             <span>Amount</span>
-            <span className="fw-bold font-montserrat fs-2 ps-3">
-              Rs.{detail.amount}
+            <span className="fw-bold font-montserrat fs-2  ">
+
+              <CurrencyFormat
+                value={inputVal.amount}
+                displayType={"text"}
+                thousandSeparator={true}
+                decimalScale={2}
+                fixedDecimalScale={true}
+                prefix={"Rs."}
+              />
             </span>
             <span className="font-montserrat">
-              Subtotal: &nbsp;
-              <span className="fw-bold">Rs.{detail.amount}</span>
-              &nbsp; Tax:{" "}
-              <span className="fw-bold">Rs.{detail?.tax || "0.00"}</span>
+              <p className="m-0">
+                Subtotal: &nbsp;
+                <span className="fw-bold" >
+                  <CurrencyFormat
+                    value={inputVal.amount}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    decimalScale={2}
+                    fixedDecimalScale={true}
+                    prefix={"Rs."}
+                  />
+                </span>
+              </p>
+              <p>Tax: <span className="fw-bold"> Rs.{inputVal?.tax || "0.00"}
+              </span>
+              </p>
             </span>
             <span>Billing reason</span>
             <span className="fw-bold">
               You're being billed because you've reached your billing threshold.
             </span>
           </Grid.Col>
+
           <Grid.Col
             span={5}
             className="bg-white rounded-3 shadow p-3 d-flex flex-column justify-content-between"
@@ -92,16 +165,20 @@ const TransactionDetails = () => {
             <Grid>
               <Grid.Col span={7} className="d-flex flex-column">
                 <span>Transaction ID</span>
-                <span className="fw-bold">{detail.transaction_id}</span>
+                <span className="fw-bold">{inputVal.transaction_id}</span>
               </Grid.Col>
               <Grid.Col span={5} className="d-flex flex-column">
                 <span>Date</span>
-                <span
-                  className="px-3 py-2 rounded-3"
-                  style={{ background: "#f1f1f3" }}
-                >
-                  <i className="fa fa-calendar me-1"></i> {dayjs(detail.date).format('DD MMM YYYY')}
-                </span>
+
+                <DatePickerInput
+                  valueFormat={dateFormat} // Set the desired date format
+                  className="select-grey-color font-poppins contentdatepicker"
+                  placeholder="Pick dates range"
+                  value={selectedDate}
+                  onChange={handleChange}
+                  type="range"
+                />
+
               </Grid.Col>
             </Grid>
             <Grid>
@@ -110,19 +187,19 @@ const TransactionDetails = () => {
                 <span className="d-flex align-items-center gap-1">
                   <img
                     width={35}
-                    src={detail?.payment_method_icon}
+                    src={inputVal?.payment_method_icon}
                     alt="payment type"
                   />
                   <span className="d-flex flex-column">
                     <span>
-                      {detail?.payment_method} · {detail?.card_number}
+                      {inputVal?.payment_method} · {inputVal?.card_number}
                     </span>
                   </span>
                 </span>
               </Grid.Col>
               <Grid.Col span={5} className="d-flex flex-column">
                 <span>Reference number</span>
-                <span>{detail?.payment_token}</span>
+                <span>{inputVal?.card_ref_number}</span>
               </Grid.Col>
             </Grid>
           </Grid.Col>
@@ -151,10 +228,10 @@ const TransactionDetails = () => {
                 <span
                   style={{ fontSize: "14px" }}
                   className={
-                    detail?.payment_status + "-status rounded-pill fw-bold"
+                    inputVal?.payment_status + "-status rounded-pill fw-bold"
                   }
                 >
-                  {detail?.payment_status}
+                  {inputVal?.payment_status}
                 </span>
               </Grid.Col>
             </Grid>

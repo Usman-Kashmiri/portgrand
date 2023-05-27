@@ -4,17 +4,14 @@ import "./sidebar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { sideNav } from "../data/data";
 import help from "./images/help.png";
-// import Dropdown from 'react-bootstrap/Dropdown';
-// import DropdownButton from 'react-bootstrap/DropdownButton';
-// import metaimg from './images/metaimage.png'
-// import dropdownlogoimg from './images/dropdownlogoimg.png'
-import Homedetail from "./homedetail";
+import AuthUser from "../Config/UserAuth";
+import { BiLogOut } from 'react-icons/bi';
 
 const Sidebar = ({ Homepage }) => {
-  console.log(window.location.pathname);
 
   const [active, setactive] = useState("");
-
+  const { logout, getToken } = AuthUser();
+  const gtoken = getToken();
   const navigate = useNavigate();
 
   return (
@@ -62,6 +59,15 @@ const Sidebar = ({ Homepage }) => {
               </div>
             );
           })}
+          {gtoken ? (
+            <div className='navlinkdiv' >
+              <div onClick={() => { logout() }} style={{ cursor: 'pointer', color: '#000' }} className="sidebarnavlinks">
+                <BiLogOut style={{ fontSize: '25px', color: '#596870', marginRight: '10px' }} />
+                Logout
+              </div>
+              <br />
+            </div>
+          ) : ''}
           <div className="navlinkdiv">
             <img src={help} className="navlinkicon" />
             <select className="sidebarnavlinksdrop">

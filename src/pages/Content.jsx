@@ -5,15 +5,13 @@ import { Container, Grid } from "@mantine/core";
 import { Contentdrops } from "../data/data";
 import { Link } from "react-router-dom";
 import { DatePickerInput } from "@mantine/dates";
-import { selectOptions, selectOptions2 } from "../data/data";
 import { Dropdown } from "react-bootstrap";
 import contentcolumn from "../components/images/contentcoulums.png";
-import searchiwala from "../components/images/searchiwala.png";
 import contentdrop from "../components/images/contentfrops.png";
 import collectiondrop from "../components/images/collectionsdropimg.png";
 import createdrop from "../components/images/creativedropimg.png";
 import Tabledetails from "../components/tables";
-
+import dayjs from 'dayjs';
 const Content = () => {
   const contenetabslinkarray = [
     "Published",
@@ -26,6 +24,11 @@ const Content = () => {
     new Date(2023, 3, 17),
     new Date(),
   ]);
+  const dateFormat = 'DD MMMM YYYY';
+
+  const handleChange = (value) => {
+    setSelectedDate(value);
+  };
 
   const [secopmnavactiv, setsecopmnavactiv] = useState("Published");
   function activnav(e) {
@@ -286,12 +289,14 @@ const Content = () => {
                   ></i>
                 </div>
                 <DatePickerInput
+                valueFormat={dateFormat} // Set the desired date format
                   className="select-grey-color font-poppins contentdatepicker"
                   placeholder="Pick dates range"
                   value={selectedDate}
-                  onChange={setSelectedDate}
+                  onChange={handleChange}
                   type="range"
                 />
+
                 <div className="columnsboxdiv">
                   <button className="columnsbtndiv">
                     <img

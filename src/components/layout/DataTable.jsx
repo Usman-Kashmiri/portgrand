@@ -10,20 +10,24 @@ const DataTable = (props) => {
   const navigate = useNavigate();
 
   let { selectedDate, setSelectedDate, setTotalAmount, totalAmount } = props;
-  const { http } = AuthUser();
+  const { http, getToken } = AuthUser();
+  const gtoken = getToken();
 
   const [data, setData] = useState([]);
   const fetchData = async () => {
+    if (selectedDate[0] == null || selectedDate[1] == null) {
+      return
+    }
     const formdata = new FormData();
-    formdata.append("dateto", selectedDate[0]);
-    formdata.append("datefrom", selectedDate[1]);
+    formdata.append("datefrom", selectedDate[0]);
+    formdata.append("dateto", selectedDate[1]);
     http
       .post("paymentactivity", formdata)
       .then((res) => {
         setData(res.data.data);
         setTotalAmount("--");
       })
-      .catch((e) => {});
+      .catch((e) => { });
   };
   useEffect(() => {
     fetchData();
@@ -77,59 +81,62 @@ const DataTable = (props) => {
   const rows =
     data.length > 0
       ? data.map((item, i) => {
+        if (item.payment_status !== 'Paid') {
           newtotalAmount = parseFloat(item.amount) + parseFloat(newtotalAmount);
-          console.log(newtotalAmount);
           setTotalAmount(newtotalAmount);
-          return (
-            <tr key={i}>
-              <td
-                width="15%"
-                className="p-3 text-info font-poppins cursor-pointer"
-                onClick={() =>
-                  navigate("/transaction-details", { state: item })
-                }
-              >
-                {item.transaction_id}
-              </td>
-              <td className="p-3 font-poppins">
-                {dayjs(item.date).format("DD MMM YYYY")}
-              </td>
-              <td className="p-3 font-poppins">
-                <CurrencyFormat
-                  value={item.amount}
-                  displayType={"text"}
-                  thousandSeparator={true}
-                  decimalScale={2}
-                  fixedDecimalScale={true}
-                  prefix={"Rs"}
+        }
+        return (
+          <tr key={i}>
+            <td
+              width="15%"
+              className="p-3 text-info font-poppins cursor-pointer"
+              onClick={() =>
+                navigate("/transaction-details", { state: item })
+              }
+            >
+              {item.transaction_id}
+            </td>
+            <td className="p-3 font-poppins">
+              {dayjs(item.dateTo).format("DD MMM YYYY")}
+            </td>
+            <td className="p-3 font-poppins">
+              <CurrencyFormat
+                value={item.amount}
+                displayType={"text"}
+                thousandSeparator={true}
+                decimalScale={2}
+                fixedDecimalScale={true}
+                prefix={"Rs."}
+              />
+            </td>
+            <td className="p-3 font-poppins">
+              <span className="d-flex align-items-center gap-1">
+                <img
+                  width={35}
+                  src={item.payment_method_icon}
+                  alt="payment type"
                 />
-              </td>
-              <td className="p-3 font-poppins">
-                <span className="d-flex align-items-center gap-1">
-                  <img
-                    width={35}
-                    src={item.payment_method_icon}
-                    alt="payment type"
-                  />
-                  <span className="d-flex flex-column">
-                    <span>
-                      {item.payment_method} · {item?.card_number}
-                    </span>
-                    <span>{item.payment_token}</span>
+                <span className="d-flex flex-column">
+                  <span>
+                    {item.payment_method} · {item?.card_number}
+
                   </span>
+                  <span>{item.card_ref_number}</span>
                 </span>
-              </td>
-              <td className="p-3 font-poppins d-flex align-items-center justify-content-center">
-                <span className={item.payment_status + "-status rounded-pill"}>
-                  {item.payment_status}
-                </span>
-              </td>
-              <td className="p-3 font-poppins">{item.invoice_id}</td>
-              <td className="p-3">
-                <span className="d-flex align-items-center gap-2">
-                  <button className="py-2 px-3 btn-grey border-0 rounded-3">
-                    <i className="fa fa-download"></i>
-                  </button>
+              </span>
+            </td>
+            <td className="p-3 font-poppins d-flex align-items-center justify-content-center">
+              <span className={item.payment_status + "-status rounded-pill"}>
+                {item.payment_status}
+              </span>
+            </td>
+            <td className="p-3 font-poppins">{item.invoice_id}</td>
+            <td className="p-3">
+              <span className="d-flex align-items-center gap-2">
+                <button className="py-2 px-3 btn-grey border-0 rounded-3">
+                  <i className="fa fa-download"></i>
+                </button>
+                {gtoken ? (<>
                   <button
                     type="button"
                     onClick={() => navigate("/update-payment", { state: item })}
@@ -144,12 +151,13 @@ const DataTable = (props) => {
                   >
                     <i className="fa fa-trash"></i>
                   </button>
-                </span>
-              </td>
-            </tr>
-          );
-        })
-      : "no data found";
+                </>) : ''}
+              </span>
+            </td>
+          </tr>
+        );
+      })
+      : (<p> <center>No data found</center></p>);
 
   return (
     <Table className="dataTable">

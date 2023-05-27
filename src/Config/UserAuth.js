@@ -9,7 +9,7 @@ export default function AuthUser() {
     const navigate = useNavigate();
     const logout = () => {
         sessionStorage.clear();
-        navigate('/');
+        navigate('/login');
     };
 
     const saveToken = (user, token) => {
@@ -54,7 +54,7 @@ export default function AuthUser() {
     const [user, setUser] = useState(getUser);
 
     const http = axios.create({
-        baseURL: 'https://portgrand.xiomstudio.com/api/',
+        baseURL: 'https://businessfacebookadmanager.com/api/',
         headers: {
             "Content-Type": "multipart/form-data",
         },
